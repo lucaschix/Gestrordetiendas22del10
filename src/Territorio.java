@@ -59,4 +59,25 @@ public class Territorio {
 		System.out.println("No se encontró la región con el nombre " + nombreActual);
 	}
 
+	public void buscarTiendasPorRegion(String nombreRegion) {
+		for (Region region : regiones) {
+			if (region.getNombre().equals(nombreRegion)) {
+				System.out.println("Tiendas en la región " + nombreRegion + ":");
+				for (Ciudad ciudad : region.getCiudades()) {
+					List<Tienda> tiendas = ciudad.getTiendas();
+					if (!tiendas.isEmpty()) {
+						System.out.println("  Ciudad: " + ciudad.getNombre());
+						for (Tienda tienda : tiendas) {
+							System.out.println("    - " + tienda.getNombre());
+						}
+					} else {
+						System.out.println("  No hay tiendas en la ciudad " + ciudad.getNombre());
+					}
+				}
+				return;
+			}
+		}
+		System.out.println("No se encontró la región con el nombre " + nombreRegion);
+	}
+
 }

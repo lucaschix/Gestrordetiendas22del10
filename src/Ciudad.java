@@ -43,7 +43,7 @@ public class Ciudad {
 		System.out.println("Region "+getNombre()+" eliminada");
 	}
 
-	public void modificarRegion(String nombreActual, String nuevoNombre, String nuevaDireccion, int nuevoHApertura,int nuevoHCierre) {
+	public void modificarTienda(String nombreActual, String nuevoNombre, String nuevaDireccion, int nuevoHApertura,int nuevoHCierre) {
 		for (Tienda tienda : tiendas) {
 			if (tienda.getNombre().equals(nombreActual)) {
 				tienda.setNombre(nuevoNombre);
@@ -56,4 +56,6 @@ public class Ciudad {
 		}
 		System.out.println("No se encontró la tienda que buscas puede que este en otra ciudad o region con el nombre " + nombreActual);
 	}
+
+
 }

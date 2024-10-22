@@ -3,7 +3,7 @@ import java.util.List;
 public class Region {
 
 	private String Nombre;
-	private List<Ciudad> ciudades;
+	public List<Ciudad> ciudades;
 
 	public String getNombre() {
 		// TODO - implement Region.getNombre
