@@ -5,16 +5,16 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // Crear empleados
-        Empleado empleado1 = new Empleado("Juan Pérez", 1, "Vendedor");
-        Empleado empleado2 = new Empleado("Ana Gómez", 2, "Gerente");
+        Empleado empleado1 = new Empleado("Jorge Diaz", 1, "Cajero");
+        Empleado empleado2 = new Empleado("Gabriela Peñailillo", 2, "Presidenta");
 
         // Crear productos
-        Producto producto1 = new Producto(101, "Laptop", 800, "Electrónica", 10);
-        Producto producto2 = new Producto(102, "Teléfono", 500, "Electrónica", 5);
+        Producto producto1 = new Producto(101, "Coca-cola", 800, "Frituras", 10);
+        Producto producto2 = new Producto(102, "Papas Fritas", 500, "Bebidas", 5);
 
         // Crear clientes
-        Cliente cliente1 = new Cliente("Carlos Ruiz", 1001);
-        Cliente cliente2 = new Cliente("Lucía Salazar", 1002);
+        Cliente cliente1 = new Cliente("Oscar Aguayo", 1003);
+        Cliente cliente2 = new Cliente("Carlos Cares", 1043);
 
         // Crear una tienda
         List<Empleado> empleados = new ArrayList<>();
@@ -29,10 +29,10 @@ public class Main {
         clientes.add(cliente1);
         clientes.add(cliente2);
 
-        Tienda tienda = new Tienda("ElectroShop", "Calle 123", 9, 21, empleados, productos, clientes);
+        Tienda tienda = new Tienda("Lider", "Calle 123", 9, 21, empleados, productos, clientes);
 
         // Probar métodos de Tienda
-        tienda.agregarEmpleado(new Empleado("Pedro González", 3, "Cajero"));
+        tienda.agregarEmpleado(new Empleado("Ariel Soto", 33, "Dueño"));
         tienda.eliminarEmpleado(empleado1);
         tienda.buscarEmpleadoPorID(2);
 
@@ -45,7 +45,7 @@ public class Main {
 
         tienda.añadirCliente(new Cliente("María López", 1003));
         tienda.eliminarCliente(cliente1);
-        tienda.buscarClientepornumerodeCliente(1002);
+        tienda.buscarClientepornumerodeCliente(1003);
 
         // Crear una compra
         List<Producto> productosComprados = new ArrayList<>();
@@ -57,22 +57,22 @@ public class Main {
         cliente2.mostrarHistorialDeCompras();
 
         // Crear ciudad y agregar tienda
-        Ciudad ciudad = new Ciudad("Metropolis", 12345);
+        Ciudad ciudad = new Ciudad("Temuco", 3312);
         ciudad.crearTienda(tienda);
 
         // Crear región y agregar ciudad
-        Region region = new Region("Región Central");
+        Region region = new Region("Región de la Araucania");
         region.crearCiudad(ciudad);
 
         // Crear territorio y agregar región
         Territorio territorio = new Territorio();
-        territorio.crearRegiones(region, "Región Central");
+        territorio.crearRegiones(region, "Territorio centro-sur");
 
         // Buscar tiendas por región
-        territorio.buscarTiendasPorRegion("Región Central");
+        territorio.buscarTiendasPorRegion("Región de la Araucania");
 
         // Modificar atributos de la tienda
-        ciudad.modificarTienda("ElectroShop", "ElectroShop Nueva", "Avenida 456", 10, 20);
+        ciudad.modificarTienda("Lider", "Jumbo", "Santa Rosa 3312", 10, 20);
 
         // Eliminar tienda
         ciudad.eliminarTienda(tienda);
