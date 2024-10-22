@@ -97,5 +97,54 @@ public class Tienda {
 		}
 
 	}
+	public void  añadirProducto(Producto producto) {
+		productos.add(producto);
+		System.out.println("Producto agregado correctamente");
 
+	}
+	public  void eliminarProducto(Producto producto){
+		productos.remove(producto);
+		System.out.println("Producto " +producto.getCodigo()+" eliminado");
+	}
+	public void quitarProductosporCodigo(int codigo){
+		for(Producto producto : productos){
+			if(producto.getCodigo() == codigo ){
+				if(producto.getCantidad()>0){
+					producto.setCantidad(producto.getCantidad() - 1);
+				}else{
+					System.out.println("La cantidad es 0 no podemos restar productos a los cuales ya no tenemos en stock");
+				}
+
+
+			}
+		}
+	}
+
+	public void agregarProductosporCodigo(int codigo){
+		for(Producto producto : productos){
+			if(producto.getCodigo() == codigo ){
+				if(producto.getCantidad()>=0){
+					producto.setCantidad(producto.getCantidad() + 1);
+				}
+			}
+		}
+	}
+
+	public void consultarProductos(){
+		for( Producto producto : productos){
+			System.out.println("-Datos del producto: \n Precio" +producto.getCodigo()+"  Cantidad: "+producto.getCantidad()+" Categoria: "+producto.getCategoria()+" Precio: "+producto.getPrecio());
+		}
+	}
+
+	public void inventarioDeunProducto(int codigo){
+		for (Producto producto : productos){
+			if(producto.getCodigo() == codigo ){
+				if(producto.getCantidad()>0){
+					System.out.println("La cantidad de "+producto.getCodigo()+" es: "+producto.getCantidad());
+				}else{
+					System.out.println("no hay productos unidades disponibles de "+producto.getCodigo());
+				}
+			}
+		}
+	}
 }

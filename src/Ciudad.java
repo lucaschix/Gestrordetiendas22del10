@@ -57,5 +57,7 @@ public class Ciudad {
 		System.out.println("No se encontró la tienda que buscas puede que este en otra ciudad o region con el nombre " + nombreActual);
 	}
 
+	public void consultarHistorialdecompas(){
 
+	}
 }
