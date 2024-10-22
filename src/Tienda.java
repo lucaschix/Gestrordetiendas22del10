@@ -8,6 +8,7 @@ public class Tienda {
 	private int horarioCierre;
 	private List<Empleado> empleados;
 	private List<Producto> productos;
+	private List<Cliente> clientes;
 
 	// Getter para nombre
 	public String getNombre() {
@@ -69,6 +70,14 @@ public class Tienda {
 		this.productos = productos;
 	}
 
+	public List<Cliente> getCliente() {
+		return this.clientes;
+	}
+
+
+	public void setCliente(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
 	// Método para agregar un empleado (debes implementarlo)
 	public void agregarEmpleado(Empleado empleado) {
 		empleados.add(empleado);
@@ -146,5 +155,22 @@ public class Tienda {
 				}
 			}
 		}
+	}
+
+	public void  añadirCliente(Cliente cliente) {
+		clientes.add(cliente);
+		System.out.println("Producto agregado correctamente");
+
+	}
+	public  void eliminarCliente(Cliente cliente){
+		clientes.remove(cliente);
+		System.out.println("Producto " +cliente.getNombre()+" eliminado se porto muy mal el tipo");
+	}
+
+	public void buscarClientepornumerodeCliente(int numeroCliente){
+		for(Cliente cliente : clientes){
+			if(cliente.getNumeroCliente() ==meroCliente){}
+		}
+
 	}
 }
