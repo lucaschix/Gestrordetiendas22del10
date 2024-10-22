@@ -9,6 +9,7 @@ public class Compra {
 	private String medioPago;
 	private List<Producto> productoscomprados;
 
+
 	public int getNumeroCompra() {
 		return this.numeroCompra;
 	}
@@ -43,5 +44,7 @@ public class Compra {
 	public void setProductoscomprados(List<Producto> productoscomprados) {
 		this.productoscomprados = productoscomprados;
 	}
+
+
 
 }

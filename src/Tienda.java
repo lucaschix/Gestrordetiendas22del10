@@ -169,8 +169,11 @@ public class Tienda {
 
 	public void buscarClientepornumerodeCliente(int numeroCliente){
 		for(Cliente cliente : clientes){
-			if(cliente.getNumeroCliente() ==meroCliente){}
+			if(cliente.getNumeroCliente() ==numeroCliente){
+				System.out.println("CLiente encontrado"+cliente);
+			}
 		}
-
 	}
+
+
 }

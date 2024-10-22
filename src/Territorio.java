@@ -1,9 +1,15 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Territorio {
 
 	private String nombre;
 	private List<Region> regiones;
+
+	// Constructor para inicializar la lista de regiones
+	public Territorio() {
+		this.regiones = new ArrayList<>(); // Inicializa la lista de regiones
+	}
 
 	public String getNombre() {
 		return this.nombre;
@@ -21,15 +27,16 @@ public class Territorio {
 		this.regiones = regiones;
 	}
 
-
-	public void crearRegiones(Region  nameregion){
+	public void crearRegiones(Region nameregion) {
 		regiones.add(nameregion);
-		System.out.println("Region "+getNombre()+" agregada");
+		System.out.println("Región " + nameregion.getNombre() + " agregada al territorio " + getNombre());
 	}
-	public void eliminarRegion(Region nameregion){
+
+	public void eliminarRegion(Region nameregion) {
 		regiones.remove(nameregion);
-		System.out.println("Region "+getNombre()+" eliminada");
+		System.out.println("Región " + nameregion.getNombre() + " eliminada del territorio " + getNombre());
 	}
+
 	public void modificarRegion(String nombreActual, String nuevoNombre) {
 		for (Region region : regiones) {
 			if (region.getNombre().equals(nombreActual)) {
@@ -61,5 +68,4 @@ public class Territorio {
 		}
 		System.out.println("No se encontró la región con el nombre " + nombreRegion);
 	}
-
 }
