@@ -7,35 +7,35 @@ public class Main {
         // Crear productos
         Producto producto1 = new Producto();
         producto1.setCodigo(1);
-        producto1.setDescripcion("Producto A");
+        producto1.setDescripcion("papas lays");
         producto1.setPrecio(100);
-        producto1.setCategoria("Categoria 1");
+        producto1.setCategoria("Frituras");
         producto1.setCantidad(10);
 
         Producto producto2 = new Producto();
         producto2.setCodigo(2);
-        producto2.setDescripcion("Producto B");
+        producto2.setDescripcion("Coca-Cola");
         producto2.setPrecio(150);
-        producto2.setCategoria("Categoria 2");
+        producto2.setCategoria("Bebidas");
         producto2.setCantidad(5);
 
         // Crear empleado
         Empleado empleado1 = new Empleado();
-        empleado1.setNombre("Juan");
+        empleado1.setNombre("Jorge Diaz");
         empleado1.setID(101);
-        empleado1.setCargo("Vendedor");
+        empleado1.setCargo("Cajero");
 
         // Crear cliente
         Cliente cliente1 = new Cliente();
-        cliente1.setNombre("Maria");
-        cliente1.setNumeroCliente(1001);
+        cliente1.setNombre("Gabriela Peñailillo");
+        cliente1.setNumeroCliente(3312);
         cliente1.setCompras(new ArrayList<>());
 
         // Crear compra
         Compra compra1 = new Compra();
-        compra1.setNumeroCompra(1);
+        compra1.setNumeroCompra(1233);
         compra1.setFechaCompra(new Date());
-        compra1.setTotal(100);
+        compra1.setTotal(20000);
         compra1.setMedioPago("Tarjeta");
         compra1.setProductoscomprados(List.of(producto1));
 
@@ -58,7 +58,7 @@ public class Main {
         // Crear ciudad
         Ciudad ciudad1 = new Ciudad();
         ciudad1.setNombre("Ciudad A");
-        ciudad1.setCodigoPostal(12345);
+        ciudad1.setCodigoPostal(456679);
         ciudad1.setTiendas(new ArrayList<>());
         ciudad1.crearTienda(tienda1);
 
@@ -70,7 +70,7 @@ public class Main {
 
         // Crear territorio
         Territorio territorio = new Territorio();
-        territorio.setNombre("Territorio Norte");
+        territorio.setNombre("Territorio pueblo nuevo");
         territorio.crearRegiones(region1);
 
         // Agregar compra al cliente
