@@ -6,12 +6,21 @@ public class Producto {
 	private String categoria;
 	private int cantidad;
 
+	// Constructor que inicializa todos los atributos del producto
+	public Producto(int codigo, String descripcion, int precio, String categoria, int cantidad) {
+		this.codigo = codigo;
+		this.descripcion = descripcion;
+		this.precio = precio;
+		this.categoria = categoria;
+		this.cantidad = cantidad;
+	}
+
 	public int getCodigo() {
 		return this.codigo;
 	}
 
 	/**
-	 * 
+	 *
 	 * @param codigo
 	 */
 	public void setCodigo(int codigo) {
@@ -23,7 +32,7 @@ public class Producto {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param descripcion
 	 */
 	public void setDescripcion(String descripcion) {
@@ -35,7 +44,7 @@ public class Producto {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param precio
 	 */
 	public void setPrecio(int precio) {
@@ -47,7 +56,7 @@ public class Producto {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param categoria
 	 */
 	public void setCategoria(String categoria) {
@@ -59,11 +68,10 @@ public class Producto {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param cantidad
 	 */
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-
 }

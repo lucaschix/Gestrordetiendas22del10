@@ -10,6 +10,18 @@ public class Tienda {
 	private List<Producto> productos;
 	private List<Cliente> clientes;
 
+	// Constructor que inicializa todos los atributos de la tienda
+	public Tienda(String nombre, String direccion, int horarioApertura, int horarioCierre,
+				  List<Empleado> empleados, List<Producto> productos, List<Cliente> clientes) {
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.horarioApertura = horarioApertura;
+		this.horarioCierre = horarioCierre;
+		this.empleados = empleados;
+		this.productos = productos;
+		this.clientes = clientes;
+	}
+
 	// Getter para nombre
 	public String getNombre() {
 		return this.nombre;
@@ -70,110 +82,104 @@ public class Tienda {
 		this.productos = productos;
 	}
 
-	public List<Cliente> getCliente() {
+	public List<Cliente> getClientes() {
 		return this.clientes;
 	}
 
-
-	public void setCliente(List<Cliente> clientes) {
+	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-	// Método para agregar un empleado (debes implementarlo)
+
+	// Método para agregar un empleado
 	public void agregarEmpleado(Empleado empleado) {
 		empleados.add(empleado);
-		System.out.println("Empleado agregado correctamente sus datos son:"+ "Nombre: " +empleado.getNombre()+"Cargo:"+empleado.getCargo()+"ID identificador: "+empleado.getID());
-
+		System.out.println("Empleado agregado correctamente. Sus datos son: Nombre: " + empleado.getNombre() + ", Cargo: " + empleado.getCargo() + ", ID identificador: " + empleado.getID());
 	}
-	public void eliminarEmpleado(Empleado nombreEmpleado){
+
+	public void eliminarEmpleado(Empleado nombreEmpleado) {
 		empleados.remove(nombreEmpleado);
-		System.out.println("Empleado "+nombreEmpleado+" eliminado");
+		System.out.println("Empleado " + nombreEmpleado + " eliminado");
 		System.out.println(empleados);
-
-
 	}
-	public void buscarEmpleadoPorID(int ID) {
 
+	public void buscarEmpleadoPorID(int ID) {
 		for (Empleado empleado : empleados) {
 			if (empleado.getID() == ID) {
-				System.out.println("Cargo: " + empleado.getCargo() +
-						", ID: " + empleado.getID() +
-						", Nombre del empleado: " + empleado.getNombre());
-
-				break;
-			}else{
-				System.out.println("No se encontró ningún empleado con el ID: " + ID);
+				System.out.println("Cargo: " + empleado.getCargo() + ", ID: " + empleado.getID() + ", Nombre del empleado: " + empleado.getNombre());
+				return; // Para salir del bucle si se encuentra
 			}
 		}
-
+		System.out.println("No se encontró ningún empleado con el ID: " + ID);
 	}
-	public void  añadirProducto(Producto producto) {
+
+	public void añadirProducto(Producto producto) {
 		productos.add(producto);
 		System.out.println("Producto agregado correctamente");
-
 	}
-	public  void eliminarProducto(Producto producto){
+
+	public void eliminarProducto(Producto producto) {
 		productos.remove(producto);
-		System.out.println("Producto " +producto.getCodigo()+" eliminado");
+		System.out.println("Producto " + producto.getCodigo() + " eliminado");
 	}
-	public void quitarProductosporCodigo(int codigo){
-		for(Producto producto : productos){
-			if(producto.getCodigo() == codigo ){
-				if(producto.getCantidad()>0){
+
+	public void quitarProductosporCodigo(int codigo) {
+		for (Producto producto : productos) {
+			if (producto.getCodigo() == codigo) {
+				if (producto.getCantidad() > 0) {
 					producto.setCantidad(producto.getCantidad() - 1);
-				}else{
-					System.out.println("La cantidad es 0 no podemos restar productos a los cuales ya no tenemos en stock");
+				} else {
+					System.out.println("La cantidad es 0, no podemos restar productos a los cuales ya no tenemos en stock");
 				}
-
-
+				return; // Para salir del bucle una vez encontrado
 			}
 		}
 	}
 
-	public void agregarProductosporCodigo(int codigo){
-		for(Producto producto : productos){
-			if(producto.getCodigo() == codigo ){
-				if(producto.getCantidad()>=0){
-					producto.setCantidad(producto.getCantidad() + 1);
-				}
+	public void agregarProductosporCodigo(int codigo) {
+		for (Producto producto : productos) {
+			if (producto.getCodigo() == codigo) {
+				producto.setCantidad(producto.getCantidad() + 1);
+				return; // Para salir del bucle una vez encontrado
 			}
 		}
 	}
 
-	public void consultarProductos(){
-		for( Producto producto : productos){
-			System.out.println("-Datos del producto: \n Precio" +producto.getCodigo()+"  Cantidad: "+producto.getCantidad()+" Categoria: "+producto.getCategoria()+" Precio: "+producto.getPrecio());
+	public void consultarProductos() {
+		for (Producto producto : productos) {
+			System.out.println("- Datos del producto: \n Precio: " + producto.getPrecio() + "  Cantidad: " + producto.getCantidad() + " Categoria: " + producto.getCategoria() + " Precio: " + producto.getPrecio());
 		}
 	}
 
-	public void inventarioDeunProducto(int codigo){
-		for (Producto producto : productos){
-			if(producto.getCodigo() == codigo ){
-				if(producto.getCantidad()>0){
-					System.out.println("La cantidad de "+producto.getCodigo()+" es: "+producto.getCantidad());
-				}else{
-					System.out.println("no hay productos unidades disponibles de "+producto.getCodigo());
+	public void inventarioDeunProducto(int codigo) {
+		for (Producto producto : productos) {
+			if (producto.getCodigo() == codigo) {
+				if (producto.getCantidad() > 0) {
+					System.out.println("La cantidad de " + producto.getCodigo() + " es: " + producto.getCantidad());
+				} else {
+					System.out.println("No hay unidades disponibles de " + producto.getCodigo());
 				}
+				return; // Para salir del bucle una vez encontrado
 			}
 		}
 	}
 
-	public void  añadirCliente(Cliente cliente) {
+	public void añadirCliente(Cliente cliente) {
 		clientes.add(cliente);
-		System.out.println("Producto agregado correctamente");
-
+		System.out.println("Cliente agregado correctamente");
 	}
-	public  void eliminarCliente(Cliente cliente){
+
+	public void eliminarCliente(Cliente cliente) {
 		clientes.remove(cliente);
-		System.out.println("Producto " +cliente.getNombre()+" eliminado se porto muy mal el tipo");
+		System.out.println("Cliente " + cliente.getNombre() + " eliminado.");
 	}
 
-	public void buscarClientepornumerodeCliente(int numeroCliente){
-		for(Cliente cliente : clientes){
-			if(cliente.getNumeroCliente() ==numeroCliente){
-				System.out.println("CLiente encontrado"+cliente);
+	public void buscarClientepornumerodeCliente(int numeroCliente) {
+		for (Cliente cliente : clientes) {
+			if (cliente.getNumeroCliente() == numeroCliente) {
+				System.out.println("Cliente encontrado: " + cliente);
+				return; // Para salir del bucle una vez encontrado
 			}
 		}
+		System.out.println("No se encontró el cliente con el número: " + numeroCliente);
 	}
-
-
 }

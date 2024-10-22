@@ -27,7 +27,7 @@ public class Territorio {
 		this.regiones = regiones;
 	}
 
-	public void crearRegiones(Region nameregion) {
+	public void crearRegiones(Region nameregion, String nombre) {
 		regiones.add(nameregion);
 		System.out.println("Región " + nameregion.getNombre() + " agregada al territorio " + getNombre());
 	}

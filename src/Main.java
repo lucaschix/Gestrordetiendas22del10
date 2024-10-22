@@ -4,103 +4,77 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        // Crear empleados
+        Empleado empleado1 = new Empleado("Juan Pérez", 1, "Vendedor");
+        Empleado empleado2 = new Empleado("Ana Gómez", 2, "Gerente");
+
         // Crear productos
-        Producto producto1 = new Producto();
-        producto1.setCodigo(1);
-        producto1.setDescripcion("papas lays");
-        producto1.setPrecio(100);
-        producto1.setCategoria("Frituras");
-        producto1.setCantidad(10);
+        Producto producto1 = new Producto(101, "Laptop", 800, "Electrónica", 10);
+        Producto producto2 = new Producto(102, "Teléfono", 500, "Electrónica", 5);
 
-        Producto producto2 = new Producto();
-        producto2.setCodigo(2);
-        producto2.setDescripcion("Coca-Cola");
-        producto2.setPrecio(150);
-        producto2.setCategoria("Bebidas");
-        producto2.setCantidad(5);
+        // Crear clientes
+        Cliente cliente1 = new Cliente("Carlos Ruiz", 1001);
+        Cliente cliente2 = new Cliente("Lucía Salazar", 1002);
 
-        // Crear empleado
-        Empleado empleado1 = new Empleado();
-        empleado1.setNombre("Jorge Diaz");
-        empleado1.setID(101);
-        empleado1.setCargo("Cajero");
+        // Crear una tienda
+        List<Empleado> empleados = new ArrayList<>();
+        empleados.add(empleado1);
+        empleados.add(empleado2);
 
-        // Crear cliente
-        Cliente cliente1 = new Cliente();
-        cliente1.setNombre("Gabriela Peñailillo");
-        cliente1.setNumeroCliente(3312);
-        cliente1.setCompras(new ArrayList<>());
+        List<Producto> productos = new ArrayList<>();
+        productos.add(producto1);
+        productos.add(producto2);
 
-        // Crear compra
-        Compra compra1 = new Compra();
-        compra1.setNumeroCompra(1233);
-        compra1.setFechaCompra(new Date());
-        compra1.setTotal(20000);
-        compra1.setMedioPago("Tarjeta");
-        compra1.setProductoscomprados(List.of(producto1));
+        List<Cliente> clientes = new ArrayList<>();
+        clientes.add(cliente1);
+        clientes.add(cliente2);
 
-        // Crear tienda
-        Tienda tienda1 = new Tienda();
-        tienda1.setNombre("Tienda A");
-        tienda1.setDireccion("Calle 1");
-        tienda1.sethorarioApertura(9);
-        tienda1.sethorarioCierre(21);
-        tienda1.setProductos(new ArrayList<>());
-        tienda1.setEmpleados(new ArrayList<>());
-        tienda1.setCliente(new ArrayList<>());
+        Tienda tienda = new Tienda("ElectroShop", "Calle 123", 9, 21, empleados, productos, clientes);
 
-        // Agregar productos a la tienda
-        tienda1.añadirProducto(producto1);
-        tienda1.añadirProducto(producto2);
-        tienda1.añadirCliente(cliente1);
-        tienda1.agregarEmpleado(empleado1);
+        // Probar métodos de Tienda
+        tienda.agregarEmpleado(new Empleado("Pedro González", 3, "Cajero"));
+        tienda.eliminarEmpleado(empleado1);
+        tienda.buscarEmpleadoPorID(2);
 
-        // Crear ciudad
-        Ciudad ciudad1 = new Ciudad();
-        ciudad1.setNombre("Ciudad A");
-        ciudad1.setCodigoPostal(456679);
-        ciudad1.setTiendas(new ArrayList<>());
-        ciudad1.crearTienda(tienda1);
+        tienda.añadirProducto(new Producto(103, "Tablet", 300, "Electrónica", 15));
+        tienda.eliminarProducto(producto1);
+        tienda.quitarProductosporCodigo(102);
+        tienda.agregarProductosporCodigo(102);
+        tienda.consultarProductos();
+        tienda.inventarioDeunProducto(102);
 
-        // Crear región
-        Region region1 = new Region();
-        region1.setNombre("Región A");
-        region1.setCiudades(new ArrayList<>());
-        region1.crearCiudad(ciudad1);
+        tienda.añadirCliente(new Cliente("María López", 1003));
+        tienda.eliminarCliente(cliente1);
+        tienda.buscarClientepornumerodeCliente(1002);
 
-        // Crear territorio
-        Territorio territorio = new Territorio();
-        territorio.setNombre("Territorio pueblo nuevo");
-        territorio.crearRegiones(region1);
+        // Crear una compra
+        List<Producto> productosComprados = new ArrayList<>();
+        productosComprados.add(producto2);
+        Compra compra1 = new Compra(1, new Date(), 500, "Tarjeta de crédito", productosComprados);
 
         // Agregar compra al cliente
-        cliente1.agregarCompras(compra1, tienda1, producto1.getCodigo());
+        cliente2.agregarCompras(compra1, tienda, 102);
+        cliente2.mostrarHistorialDeCompras();
 
-        // Mostrar historial de compras del cliente
-        cliente1.mostrarHistorialDeCompras();
+        // Crear ciudad y agregar tienda
+        Ciudad ciudad = new Ciudad("Metropolis", 12345);
+        ciudad.crearTienda(tienda);
 
-        // Consultar productos de la tienda
-        tienda1.consultarProductos();
+        // Crear región y agregar ciudad
+        Region region = new Region("Región Central");
+        region.crearCiudad(ciudad);
 
-        // Buscar empleado por ID
-        tienda1.buscarEmpleadoPorID(101);
+        // Crear territorio y agregar región
+        Territorio territorio = new Territorio();
+        territorio.crearRegiones(region, "Región Central");
 
-        // Consultar inventario de un producto
-        tienda1.inventarioDeunProducto(producto1.getCodigo());
+        // Buscar tiendas por región
+        territorio.buscarTiendasPorRegion("Región Central");
 
-        // Modificar tienda
-        ciudad1.modificarTienda("Tienda A", "Tienda A Modificada", "Calle 2", 10, 22);
+        // Modificar atributos de la tienda
+        ciudad.modificarTienda("ElectroShop", "ElectroShop Nueva", "Avenida 456", 10, 20);
 
-        // Mostrar información de la región
-        System.out.println("Nombre del territorio: " + territorio.getNombre());
-        for (Region region : territorio.getRegiones()) {
-            System.out.println("Región: " + region.getNombre());
-            for (Ciudad ciudad : region.getCiudades()) {
-                System.out.println("  Ciudad: " + ciudad.getNombre());
-                for (Tienda tienda : ciudad.getTiendas()) {
-                    System.out.println("    Tienda: " + tienda.getNombre());
-                }
-            }
-        }
+        // Eliminar tienda
+        ciudad.eliminarTienda(tienda);
     }
 }
