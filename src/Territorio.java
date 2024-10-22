@@ -21,26 +21,8 @@ public class Territorio {
 		this.regiones = regiones;
 	}
 
-	public void agregarRegion(String nombre) {
-		// TODO - implement Territorio.agregarRegion
-		throw new UnsupportedOperationException();
-	}
 
-	public void modificarRegion(int id, String nombre) {
-		// TODO - implement Territorio.modificarRegion
-		throw new UnsupportedOperationException();
-	}
-
-	public void eliminarRegion(int id) {
-		// TODO - implement Territorio.eliminarRegion
-		throw new UnsupportedOperationException();
-	}
-
-	public List<Region> consultarRegiones() {
-		// TODO - implement Territorio.consultarRegiones
-		throw new UnsupportedOperationException();
-	}
-	public void crearregiones(Region  nameregion){
+	public void crearRegiones(Region  nameregion){
 		regiones.add(nameregion);
 		System.out.println("Region "+getNombre()+" agregada");
 	}
